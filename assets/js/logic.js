@@ -10,6 +10,8 @@ var answerArrayList = document.getElementById("choices");
 var correctAnswer = document.getElementById("correctAnswer");
 var endScreen = document.getElementById("end-screen");
 var submit = document.querySelector('#submit');
+var correct = new Audio('assets/sfx/correct.wav');
+var incorrect = new Audio('assets/sfx/incorrect.wav');
 var time = 50;
 var totalQuestions = 5;
 var penalizedTime = 10;
@@ -120,9 +122,11 @@ answerArrayA.addEventListener('click', function (event) {
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     console.log("correctAnswer " + correctAnswer);
     if (correctAnswer === 0) {
+        correct.play();
         score++;
     } else {
-        //incorrect answer clicked, subtract time from the clock
+        //incorrect answer clicked, play sound and subtract time from the clock
+        incorrect.play();
         time -= penalizedTime;
     }
     console.log("questionNumber = " + questionNumber);
@@ -143,9 +147,11 @@ answerArrayB.addEventListener('click', function (event) {
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     console.log("correctAnswer " + correctAnswer);
     if (correctAnswer === 1) {
+        correct.play();
         score++;
     } else {
-        //incorrect answer clicked, subtract time from the clock
+        //incorrect answer clicked, play sound and subtract time from the clock
+        incorrect.play();
         time -= penalizedTime;
     }
     console.log("questionNumber = " + questionNumber);
@@ -166,9 +172,11 @@ answerArrayC.addEventListener('click', function (event) {
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     console.log("correctAnswer " + correctAnswer);
     if (correctAnswer === 2) {
+        correct.play();
         score++;
     } else {
-        //incorrect answer clicked, subtract time from the clock
+        //incorrect answer clicked, play sound and subtract time from the clock
+        incorrect.play();
         time -= penalizedTime;
     }
     console.log("questionNumber = " + questionNumber);
@@ -189,9 +197,11 @@ answerArrayD.addEventListener('click', function (event) {
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     console.log("correctAnswer " + correctAnswer);
     if (correctAnswer === 3) {
+        correct.play();
         score++;
     } else {
-        //incorrect answer clicked, subtract time from the clock
+        //incorrect answer clicked, play sound and subtract time from the clock
+        incorrect.play();
         time -= penalizedTime;
     }
     console.log("questionNumber = " + questionNumber);
