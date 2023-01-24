@@ -10,8 +10,8 @@ var answerArrayList = document.getElementById("choices");
 var correctAnswer = document.getElementById("correctAnswer");
 var endScreen = document.getElementById("end-screen");
 var submit = document.querySelector('#submit');
-var correct = new Audio('assets/sfx/correct.wav');
-var incorrect = new Audio('assets/sfx/incorrect.wav');
+var correct = new Audio("assets/sfx/correct.wav");
+var incorrect = new Audio("assets/sfx/incorrect.wav");
 var time = 50;
 var totalQuestions = 5;
 var penalizedTime = 10;
@@ -54,10 +54,13 @@ function setCountdownTimer() {
         if (startQuiz) {
             time--;
         }
-        if (time <= 0 || questionNumber == questionsArray.length) {
+        if (questionNumber == questionsArray.length) {
             console.log("The value of questionNumber: " + questionNumber);
             // Use `clearInterval()` to stop the timer
             clearInterval(timeInterval);
+            endQuiz();
+        } else if (time < 0 ) {
+            time = 0;
             endQuiz();
         }
         document.getElementById("time").innerHTML = time;
@@ -68,7 +71,7 @@ function setCountdownTimer() {
 startButton.addEventListener("click", function () {
     quizScreen.style.display = "block";
     startScreen.style.display = "none";
-    setQuizQuestions();
+    setQuiz();
     startQuiz = true;
     setCountdownTimer();
 });
@@ -99,7 +102,7 @@ var answerArrayC = document.getElementById("answerArrayC");
 var answerArrayD = document.getElementById("answerArrayD");
 
 //Display question and answer choices
-function setQuizQuestions() {
+function setQuiz() {
     console.log("Type of answerArrayA: " + typeof (answerArrayA));
     console.log("questionNumber = " + questionNumber);
     questionTitle.textContent = questionsArray[questionNumber].question;
@@ -107,27 +110,25 @@ function setQuizQuestions() {
     answerArrayB.textContent = questionsArray[questionNumber].answerArray[1];
     answerArrayC.textContent = questionsArray[questionNumber].answerArray[2];
     answerArrayD.textContent = questionsArray[questionNumber].answerArray[3];
-    // totalQuestions--;
-};
-// function showResult() {
-//     document.createElement("hr");
-//     const pTag = document.createElement("p");
-//     pTag.texContent = "Correct!";
+}
 
-// }
 //Listener for answer choice (A) is selected
 answerArrayA.addEventListener('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     console.log("correctAnswer " + correctAnswer);
+    //Correct answer clicked, play sound and add score
     if (correctAnswer === 0) {
         correct.play();
         score++;
     } else {
-        //incorrect answer clicked, play sound and subtract time from the clock
+        //Wrong answer clicked, play sound and subtract time from the clock
         incorrect.play();
         time -= penalizedTime;
+        if (time < 0) {
+            time = 0;
+        }
     }
     console.log("questionNumber = " + questionNumber);
     if (questionNumber === questionsArray.length - 1) {
@@ -136,7 +137,7 @@ answerArrayA.addEventListener('click', function (event) {
     } else {
         questionNumber++;
         console.log("questionNumber = " + questionNumber);
-        setQuizQuestions();
+        setQuiz();
     };
 });
 
@@ -146,6 +147,7 @@ answerArrayB.addEventListener('click', function (event) {
     event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     console.log("correctAnswer " + correctAnswer);
+    //Correct answer clicked, play sound and add score
     if (correctAnswer === 1) {
         correct.play();
         score++;
@@ -153,6 +155,9 @@ answerArrayB.addEventListener('click', function (event) {
         //incorrect answer clicked, play sound and subtract time from the clock
         incorrect.play();
         time -= penalizedTime;
+        if (time < 0) {
+            time = 0;
+        }
     }
     console.log("questionNumber = " + questionNumber);
     if (questionNumber === questionsArray.length - 1) {
@@ -161,7 +166,7 @@ answerArrayB.addEventListener('click', function (event) {
     } else {
         questionNumber++;
         console.log("questionNumber = " + questionNumber);
-        setQuizQuestions();
+        setQuiz();
     };
 });
 
@@ -171,6 +176,7 @@ answerArrayC.addEventListener('click', function (event) {
     event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     console.log("correctAnswer " + correctAnswer);
+    //Correct answer clicked, play sound and add score
     if (correctAnswer === 2) {
         correct.play();
         score++;
@@ -178,6 +184,9 @@ answerArrayC.addEventListener('click', function (event) {
         //incorrect answer clicked, play sound and subtract time from the clock
         incorrect.play();
         time -= penalizedTime;
+        if (time < 0) {
+            time = 0;
+        }
     }
     console.log("questionNumber = " + questionNumber);
     if (questionNumber === questionsArray.length - 1) {
@@ -186,7 +195,7 @@ answerArrayC.addEventListener('click', function (event) {
     } else {
         questionNumber++;
         console.log("questionNumber = " + questionNumber);
-        setQuizQuestions();
+        setQuiz();
     };
 });
 
@@ -196,6 +205,7 @@ answerArrayD.addEventListener('click', function (event) {
     event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     console.log("correctAnswer " + correctAnswer);
+    //Correct answer clicked, play sound and add score
     if (correctAnswer === 3) {
         correct.play();
         score++;
@@ -203,6 +213,9 @@ answerArrayD.addEventListener('click', function (event) {
         //incorrect answer clicked, play sound and subtract time from the clock
         incorrect.play();
         time -= penalizedTime;
+        if (time < 0) {
+            time = 0;
+        }
     }
     console.log("questionNumber = " + questionNumber);
     if (questionNumber === questionsArray.length - 1) {
@@ -211,7 +224,7 @@ answerArrayD.addEventListener('click', function (event) {
     } else {
         questionNumber++;
         console.log("questionNumber = " + questionNumber);
-        setQuizQuestions();
+        setQuiz();
     };
 });
 
