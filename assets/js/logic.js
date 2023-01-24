@@ -48,19 +48,18 @@ var questionsArray = [
         correctAnswer: 3
     }];
 
-//Countdown timer
+//Set countdown timer
 function setCountdownTimer() {
     var timeInterval = setInterval(function () {
         if (startQuiz) {
             time--;
         }
-        if (questionNumber == questionsArray.length) {
-            console.log("The value of questionNumber: " + questionNumber);
-            // Use `clearInterval()` to stop the timer
-            clearInterval(timeInterval);
-            endQuiz();
-        } else if (time < 0 ) {
+        if (time < 0) {
             time = 0;
+            endQuiz();
+        } else if (questionNumber == questionsArray.length) {
+            // Stop the timer when all questions answered
+            clearInterval(timeInterval);
             endQuiz();
         }
         document.getElementById("time").innerHTML = time;
@@ -93,9 +92,9 @@ for (var j = 0; j < questionsArray[questionNumber].answerArray.length; j++) {
             button.id = "answerArrayD";
             break;
     }
-
     answerArrayList.appendChild(button);
 }
+
 var answerArrayA = document.getElementById("answerArrayA");
 var answerArrayB = document.getElementById("answerArrayB");
 var answerArrayC = document.getElementById("answerArrayC");
@@ -103,8 +102,6 @@ var answerArrayD = document.getElementById("answerArrayD");
 
 //Display question and answer choices
 function setQuiz() {
-    console.log("Type of answerArrayA: " + typeof (answerArrayA));
-    console.log("questionNumber = " + questionNumber);
     questionTitle.textContent = questionsArray[questionNumber].question;
     answerArrayA.textContent = questionsArray[questionNumber].answerArray[0];
     answerArrayB.textContent = questionsArray[questionNumber].answerArray[1];
@@ -117,7 +114,6 @@ answerArrayA.addEventListener('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
-    console.log("correctAnswer " + correctAnswer);
     //Correct answer clicked, play sound and add score
     if (correctAnswer === 0) {
         correct.play();
@@ -128,15 +124,14 @@ answerArrayA.addEventListener('click', function (event) {
         time -= penalizedTime;
         if (time < 0) {
             time = 0;
+            endQuiz();
         }
     }
-    console.log("questionNumber = " + questionNumber);
     if (questionNumber === questionsArray.length - 1) {
         questionNumber++;
         endQuiz();
     } else {
         questionNumber++;
-        console.log("questionNumber = " + questionNumber);
         setQuiz();
     };
 });
@@ -146,7 +141,6 @@ answerArrayB.addEventListener('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
-    console.log("correctAnswer " + correctAnswer);
     //Correct answer clicked, play sound and add score
     if (correctAnswer === 1) {
         correct.play();
@@ -157,15 +151,14 @@ answerArrayB.addEventListener('click', function (event) {
         time -= penalizedTime;
         if (time < 0) {
             time = 0;
+            endQuiz();
         }
     }
-    console.log("questionNumber = " + questionNumber);
     if (questionNumber === questionsArray.length - 1) {
         questionNumber++;
         endQuiz();
     } else {
         questionNumber++;
-        console.log("questionNumber = " + questionNumber);
         setQuiz();
     };
 });
@@ -175,7 +168,6 @@ answerArrayC.addEventListener('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
-    console.log("correctAnswer " + correctAnswer);
     //Correct answer clicked, play sound and add score
     if (correctAnswer === 2) {
         correct.play();
@@ -186,15 +178,14 @@ answerArrayC.addEventListener('click', function (event) {
         time -= penalizedTime;
         if (time < 0) {
             time = 0;
+            endQuiz();
         }
     }
-    console.log("questionNumber = " + questionNumber);
     if (questionNumber === questionsArray.length - 1) {
         questionNumber++;
         endQuiz();
     } else {
         questionNumber++;
-        console.log("questionNumber = " + questionNumber);
         setQuiz();
     };
 });
@@ -204,7 +195,6 @@ answerArrayD.addEventListener('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
-    console.log("correctAnswer " + correctAnswer);
     //Correct answer clicked, play sound and add score
     if (correctAnswer === 3) {
         correct.play();
@@ -215,15 +205,13 @@ answerArrayD.addEventListener('click', function (event) {
         time -= penalizedTime;
         if (time < 0) {
             time = 0;
+            endQuiz();
         }
-    }
-    console.log("questionNumber = " + questionNumber);
-    if (questionNumber === questionsArray.length - 1) {
+    } if (questionNumber === questionsArray.length - 1) {
         questionNumber++;
         endQuiz();
     } else {
         questionNumber++;
-        console.log("questionNumber = " + questionNumber);
         setQuiz();
     };
 });
@@ -241,7 +229,6 @@ submit.setAttribute('onclick', "submitScore()");
 //Submit and save user initials and scores
 function submitScore() {
     var initials = document.querySelector("#initials").value;
-    console.log("Type of initials: " + typeof (initials));
     // Validate for user input of initials
     if (initials.length === 0) {
         alert("Initials must be entered! Try again!");
@@ -251,7 +238,5 @@ function submitScore() {
         countdownTimer[0].style.visibility = "hidden";
         viewScores[0].style.visibility = "hidden";
         location.assign("./highscores.html");
-        console.log("value of quizScores: " + localStorage.getItem("quizScores"));
-        console.log("value of initials: " + localStorage.getItem("initials"));
     }
 }
