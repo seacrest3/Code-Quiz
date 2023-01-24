@@ -1,6 +1,6 @@
 //Module 6 Challenge: Coding Quiz Challenge
+//Retrieve and render user initials and scores from storage
 
-//Retrieve and render user initials and scores from storage 
 var scoreList = document.querySelector("#highscores");
 var clearHighScores = document.querySelector("#clear");
 var initials = localStorage.getItem("initials");
