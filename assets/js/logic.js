@@ -111,8 +111,8 @@ function setQuiz() {
 
 //Listener for answer choice (A) is selected
 answerArrayA.addEventListener('click', function (event) {
+    // Prevent the default behavior
     event.preventDefault();
-    event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     //Correct answer clicked, play sound and add score
     if (correctAnswer === 0) {
@@ -138,8 +138,8 @@ answerArrayA.addEventListener('click', function (event) {
 
 //Listener for answer choice (B) is selected
 answerArrayB.addEventListener('click', function (event) {
+    // Prevent the default behavior
     event.preventDefault();
-    event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     //Correct answer clicked, play sound and add score
     if (correctAnswer === 1) {
@@ -165,8 +165,8 @@ answerArrayB.addEventListener('click', function (event) {
 
 //Listener for answer choice (C) is selected
 answerArrayC.addEventListener('click', function (event) {
+    // Prevent the default behavior
     event.preventDefault();
-    event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     //Correct answer clicked, play sound and add score
     if (correctAnswer === 2) {
@@ -192,8 +192,8 @@ answerArrayC.addEventListener('click', function (event) {
 
 //Listener for answer choice (D) is selected
 answerArrayD.addEventListener('click', function (event) {
+    // Prevent the default behavior
     event.preventDefault();
-    event.stopPropagation();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
     //Correct answer clicked, play sound and add score
     if (correctAnswer === 3) {
