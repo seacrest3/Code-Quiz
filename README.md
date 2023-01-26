@@ -27,7 +27,7 @@ Create a code quiz that contains the following requirements:
 
 ### Mock up and Functionality
 
-The following image shows the web application's appearance and functionality:
+The following video shows the web application's appearance and functionality:
 
 ![Coding Quiz mock up](./assets/sfx/Coding%20Quiz.gif)
 
