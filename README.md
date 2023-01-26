@@ -7,7 +7,7 @@ As part of an interview process, a typical coding assessment is a combination of
 
 ### User Story
 
-AS A client, I WANT this app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface.
+AS A client, I WANT this app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code. It is expected to have a clean, polished, and responsive user interface.
 
 ### Acceptance Criteria
 
@@ -37,7 +37,7 @@ When a user clicks on the 'Start Quiz' button, a timer starts to count down from
 
 2. When any one of the answer choices is clicked, the next question appears
 
-3. If the answer is incorrect, the user is alerted by playing a short pulse of tone. It will penalize the time by 10 seconds. If the answer is correct, another short pulse of tune is played for a short time to appraise the user.
+3. If the answer is incorrect, the user is alerted by playing a short pulse of tone. It will penalize the time by 10 seconds. If the answer is correct, another short pulse of tune is played for a short time to appraise the user. A message is displayed for a second to show the answer is 'Correct!" or "Wrong!".
 
 4. The quiz ends when all questions are answered or the timer counts down to 0.
 
