@@ -21,7 +21,6 @@ var score = 0;
 
 var pTag = document.createElement("p");
 
-
 //Set countdown timer
 function setCountdownTimer() {
     var timeInterval = setInterval(function () {
