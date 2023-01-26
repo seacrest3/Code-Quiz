@@ -1,5 +1,5 @@
 //Module 6 Challenge: Coding Quiz Challenge
-//Set countdown timer, listeners for answer choice of each question
+//Set countdown timer, link listeners for answer choice of each question
 //Display end screen and save the final score and initials input by user
 
 var startButton = document.getElementById("start");
@@ -19,7 +19,10 @@ var startQuiz = false;
 var quizScores = [];
 var score = 0;
 
+var msgDiv = document.createElement("div");
 var pTag = document.createElement("p");
+var hrTag = document.createElement("hr");
+quizScreen.append(msgDiv);
 
 //Set countdown timer
 function setCountdownTimer() {
@@ -53,27 +56,31 @@ answerArrayA.addEventListener('click', function (event) {
     // Prevent the default behavior
     event.preventDefault();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
-    //Correct answer clicked, play sound and add score
+    //Correct answer clicked, play sound, display message and add score
     if (correctAnswer === 0) {
         correct.play();
         score++;
-        pTag.textContent = "Correct!"
+        pTag.textContent = "Correct!";
+        msgDiv.append(hrTag);
+        msgDiv.style.display = "block";
         quizScreen.append(pTag);
         setTimeout(function () {
-            pTag.textContent = ""
-            quizScreen.append(pTag);
+            msgDiv.style.display = "none";
+            pTag.textContent = "";
         },
             1000
         );
     } else {
-        //Wrong answer clicked, play sound and subtract time from the clock
+        //Wrong answer clicked, play sound, display message and subtract time from the clock
         incorrect.play();
         time -= penalizedTime;
-        pTag.textContent = "Wrong!"
+        pTag.textContent = "Wrong!";
+        msgDiv.append(hrTag);
+        msgDiv.style.display = "block";
         quizScreen.append(pTag);
         setTimeout(function () {
-            pTag.textContent = ""
-            quizScreen.append(pTag);
+            msgDiv.style.display = "none";
+            pTag.textContent = "";
         },
             1000
         );
@@ -96,27 +103,31 @@ answerArrayB.addEventListener('click', function (event) {
     // Prevent the default behavior
     event.preventDefault();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
-    //Correct answer clicked, play sound and add score
+    //Correct answer clicked, play sound, display message and add score
     if (correctAnswer === 1) {
         correct.play();
         score++;
-        pTag.textContent = "Correct!"
+        pTag.textContent = "Correct!";
+        msgDiv.append(hrTag);
+        msgDiv.style.display = "block";
         quizScreen.append(pTag);
         setTimeout(function () {
-            pTag.textContent = ""
-            quizScreen.append(pTag);
+            msgDiv.style.display = "none";
+            pTag.textContent = "";
         },
             1000
         );
     } else {
-        //incorrect answer clicked, play sound and subtract time from the clock
+        //incorrect answer clicked, play sound, display message and subtract time from the clock
         incorrect.play();
         time -= penalizedTime;
-        pTag.textContent = "Wrong!"
+        pTag.textContent = "Wrong!";
+        msgDiv.append(hrTag);
+        msgDiv.style.display = "block";
         quizScreen.append(pTag);
         setTimeout(function () {
-            pTag.textContent = ""
-            quizScreen.append(pTag);
+            msgDiv.style.display = "none";
+            pTag.textContent = "";
         },
             1000
         );
@@ -139,27 +150,31 @@ answerArrayC.addEventListener('click', function (event) {
     // Prevent the default behavior
     event.preventDefault();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
-    //Correct answer clicked, play sound and add score
+    //Correct answer clicked, play sound, display message and add score
     if (correctAnswer === 2) {
         correct.play();
         score++;
-        pTag.textContent = "Correct!"
+        pTag.textContent = "Correct!";
+        msgDiv.append(hrTag);
+        msgDiv.style.display = "block";
         quizScreen.append(pTag);
         setTimeout(function () {
-            pTag.textContent = ""
-            quizScreen.append(pTag);
+            msgDiv.style.display = "none";
+            pTag.textContent = "";
         },
             1000
         );
     } else {
-        //incorrect answer clicked, play sound and subtract time from the clock
+        //incorrect answer clicked, play sound, display message and subtract time from the clock
         incorrect.play();
         time -= penalizedTime;
-        pTag.textContent = "Wrong!"
+        pTag.textContent = "Wrong!";
+        msgDiv.append(hrTag);
+        msgDiv.style.display = "block";
         quizScreen.append(pTag);
         setTimeout(function () {
-            pTag.textContent = ""
-            quizScreen.append(pTag);
+            msgDiv.style.display = "none";
+            pTag.textContent = "";
         },
             1000
         );
@@ -182,27 +197,31 @@ answerArrayD.addEventListener('click', function (event) {
     // Prevent the default behavior
     event.preventDefault();
     correctAnswer = questionsArray[questionNumber].correctAnswer;
-    //Correct answer clicked, play sound and add score
+    //Correct answer clicked, play sound, display message and add score
     if (correctAnswer === 3) {
         correct.play();
         score++;
-        pTag.textContent = "Correct!"
+        pTag.textContent = "Correct!";
+        msgDiv.append(hrTag);
+        msgDiv.style.display = "block";
         quizScreen.append(pTag);
         setTimeout(function () {
-            pTag.textContent = ""
-            quizScreen.append(pTag);
+            msgDiv.style.display = "none";
+            pTag.textContent = "";
         },
             1000
         );
     } else {
-        //incorrect answer clicked, play sound and subtract time from the clock
+        //incorrect answer clicked, play sound, display message and subtract time from the clock
         incorrect.play();
         time -= penalizedTime;
-        pTag.textContent = "Wrong!"
+        pTag.textContent = "Wrong!";
+        msgDiv.append(hrTag);
+        msgDiv.style.display = "block";
         quizScreen.append(pTag);
         setTimeout(function () {
-            pTag.textContent = ""
-            quizScreen.append(pTag);
+            msgDiv.style.display = "none";
+            pTag.textContent = "";
         },
             1000
         );
@@ -223,8 +242,13 @@ answerArrayD.addEventListener('click', function (event) {
 function endQuiz() {
     endScreen.style.display = "block";
     quizScreen.style.display = "none";
+    endScreen.append(msgDiv);
     endScreen.append(pTag);
-    console.log("The value of pTag: "+pTag);
+    setTimeout(function () {
+        msgDiv.style.display = "none";
+    },
+        1000
+    );
     document.getElementById("final-score").innerHTML = score;
 }
 
